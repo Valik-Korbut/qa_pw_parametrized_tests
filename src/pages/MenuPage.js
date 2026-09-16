@@ -4,17 +4,17 @@ export class MenuPage {
   constructor(page) {
     this.page = page;
 
-    this.espressoCupCost = page
-      .getByRole('listitem')
-      .filter({ has: this.espressoCup });
-    this.americanoCup = page.getByTestId('Americano');
     this.cartLink = page.getByLabel('Cart page');
     this.totalCheckout = page.getByTestId('checkout');
     this.promoMessage = page.getByText(
       "It's your lucky day! Get an extra cup of Mocha for $4.",
     );
-    this.yesPromoButton = page.getByRole('button', { name: 'Yes, of course!' });
-    this.noPromoButton = page.getByRole('button', { name: "Nah, I'll skip." });
+    this.yesPromoButton = page.getByRole('button', {
+      name: 'Yes, of course!',
+    });
+    this.noPromoButton = page.getByRole('button', {
+      name: "Nah, I'll skip.",
+    });
   }
 
   coffeeCupLocator(coffeeName) {
@@ -46,7 +46,7 @@ export class MenuPage {
   }
 
   async assertCoffeeCupCostHasValue(coffeeName, value) {
-    const coffeeCup = this.page.getByLabel(coffeeName, { exact: true });
+    const coffeeCup = this.coffeeCupLocator(coffeeName);
 
     const coffeeCupCost = this.page
       .getByRole('listitem')
