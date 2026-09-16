@@ -39,6 +39,7 @@ export class CartPage {
     this.removeOneEspressoButton = page.getByRole('button', {
       name: 'Remove one Espresso',
     });
+
     this.removeOneCappuccinoButton = page.getByRole('button', {
       name: 'Remove one Cappuccino',
     });
@@ -46,6 +47,7 @@ export class CartPage {
     this.addOneEspressoButton = page.getByRole('button', {
       name: 'Add one Espresso',
     });
+
     this.addOneCappuccinoButton = page.getByRole('button', {
       name: 'Add one Cappuccino',
     });
@@ -80,6 +82,10 @@ export class CartPage {
 
   async reload() {
     await this.page.reload();
+  }
+
+  async clickRemoveAllCoffeeButton(name) {
+    await this.page.getByLabel(`Remove all ${name}`).click();
   }
 
   async clickRemoveAllEspressoButton() {
